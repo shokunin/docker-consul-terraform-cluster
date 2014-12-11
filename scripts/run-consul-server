@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eo pipefail
+echo "Starting consul"
+
+consul agent -config-dir=/config "$@"
