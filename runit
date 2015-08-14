@@ -2,12 +2,8 @@
 
 # hit this up with http://localhost:8500/ui/
 sudo rm -rf  /data:/data/docker/consul*
+echo "##############################################################"
+echo "# Now run the following commands"
+echo "cd terraform"
+echo "sudo terraform apply"
 
-# note - you need to whack thhe /data/consul1 directory
-sudo docker run -p 8300:8300 -p 8301:8301 -p 8301:8301/udp -p 8302:8302 -p 8302:8302/udp -p 8400:8400 -p 8500:8500 -p 8600:53/udp -v /data:/data/docker/consul1 --name consul1 -h consul1 -d maguec/consul-master -server -bootstrap -dc=docker
-
-CONSUL_MASTER=`sudo docker ps |grep 8500 |awk '{print $1}'`
-CONSUL_MASTER_IP=`sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $CONSUL_MASTER `
-
-sudo docker run -v /data:/data/docker/consul2 --name consul2 -h consul2 -d maguec/consul-master -server -join=${CONSUL_MASTER_IP} -dc=docker
-sudo docker run -v /data:/data/docker/consul3 --name consul3 -h consul3 -d maguec/consul-master -server -join=${CONSUL_MASTER_IP} -dc=docker
