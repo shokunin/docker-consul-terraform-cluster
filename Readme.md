@@ -4,8 +4,8 @@ Build a consul cluster on docker and run with terraform
 
 ##prerequisites
 
-1) Install and configure [docker](http://docs.docker.com/linux/started/)
-2) Install terraform from [Hashicorp](https://terraform.io/)
+1. Install and configure [docker](http://docs.docker.com/linux/started/)
+2. Install terraform from [Hashicorp](https://terraform.io/)
 
 
 ##building
