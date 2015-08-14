@@ -37,4 +37,4 @@ sudo terraform apply
 ##using
 To connect to the consul web-ui
 
-http://localhost:8500/ui/
+[http://localhost:8500/ui/](http://localhost:8500/ui/)
