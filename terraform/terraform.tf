@@ -1,14 +1,21 @@
 ######################################################################################
 #               Start up the master with ports and volumes
 ######################################################################################
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+
 resource "docker_container" "consul-master" {
   name    = "consul1"
   name    = "consul1"
   image   = "maguec/consul-master"
-  command = [ "-server",
-              "-bootstrap",
+  command = [ 
+              "-server",
+              "-bootstrap-expect=1",
               "-dc=docker",
-              "-node=consul1"]
+              "-node=consul1"
+            ]
   ports {
     internal = 8300
     external = 8300
@@ -45,7 +52,7 @@ resource "docker_container" "consul-master" {
     host_path      = "/data/docker/consul1"
   }
 }
-######################################################################################
+#####################################################################################
 resource "docker_container" "consul2" {
   name    = "consul2"
   name    = "consul2"

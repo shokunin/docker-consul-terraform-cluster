@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y unzip
 
 # Install the consul binary and web ui
 
-ADD https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip /tmp/consul.zip
+ADD https://releases.hashicorp.com/consul/0.6.0/consul_0.6.0_linux_amd64.zip /tmp/consul.zip
 RUN cd /bin && unzip /tmp/consul.zip && chmod +x /bin/consul
 
-ADD https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip /tmp/webui.zip
-RUN cd /tmp && unzip /tmp/webui.zip && mv dist /ui && rm /tmp/webui.zip
+ADD https://releases.hashicorp.com/consul/0.6.0/consul_0.6.0_web_ui.zip /tmp/webui.zip
+RUN mkdir -p /ui && cd /tmp && unzip /tmp/webui.zip && rm /tmp/webui.zip && mv *.html /ui && mv static /ui
 
 # Add consul configs
 ADD ./config /config/
